@@ -38,7 +38,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       )}
     >
       <body className="min-h-full flex flex-col">
-        <ClerkProvider proxyUrl={process.env.NEXT_PUBLIC_CLERK_PROXY_URL}>
+        <ClerkProvider>
           <QueryProvider>
             <ThemeProvider
               attribute="class"
