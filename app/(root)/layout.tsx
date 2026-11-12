@@ -1,11 +1,22 @@
+import { Suspense } from "react";
 import { onBoardUser } from "@/features/auth/actions";
 
-export default async function RootGroupLayout({
+export default function RootGroupLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  await onBoardUser();
+  return (
+    <>
+      {children}
+      <Suspense fallback={null}>
+        <Onboarding />
+      </Suspense>
+    </>
+  );
+}
 
-  return children;
+async function Onboarding() {
+  await onBoardUser();
+  return null;
 }
